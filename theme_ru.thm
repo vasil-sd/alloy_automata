@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<projection> <type name="Time"/> </projection>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="CheckNormal"/>
+   <type name="CheckSpam"/>
+   <type name="Detected"/>
+   <type name="Fail"/>
+   <type name="Int"/>
+   <type name="Normal"/>
+   <type name="NotDetected"/>
+   <type name="Receiving"/>
+   <type name="Spam"/>
+   <type name="Stage"/>
+   <type name="String"/>
+   <type name="Success"/>
+   <type name="Time"/>
+   <type name="univ"/>
+   <type name="Unknown"/>
+   <type name="open$4/Ord"/>
+   <type name="open$5/Ord"/>
+   <type name="open$6/Ord"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+   <set name="First" type="ordering/Ord"/>
+   <set name="Next" type="ordering/Ord"/>
+</node>
+
+<node color="Green">
+   <type name="Email"/>
+</node>
+
+<node color="Green" label="Valid">
+   <set name="this/ValidTypes" type="EmailType"/>
+</node>
+
+<node label="&#x041d;&#x0435;&#x0438;&#x0437;&#x0432;&#x0435;&#x0441;&#x0442;&#x043d;&#x043e;&#x0435; &#x043f;&#x0438;&#x0441;&#x044c;&#x043c;&#x043e;">
+   <type name="UnknownEmails"/>
+</node>
+
+<node label="&#x041e;&#x0431;&#x044b;&#x0447;&#x043d;&#x043e;&#x0435; &#x043f;&#x0438;&#x0441;&#x044c;&#x043c;&#x043e;">
+   <type name="NormalEmails"/>
+</node>
+
+<node label="&#x0421;&#x043f;&#x0430;&#x043c;&#x043e;&#x0432;&#x043e;&#x0435; &#x043f;&#x0438;&#x0441;&#x044c;&#x043c;&#x043e;">
+   <type name="SpamEmails"/>
+</node>
+
+<node shape="Circle" color="Gray" label="Stop">
+   <set name="this/FinalStage" type="Stage"/>
+</node>
+
+<node shape="Circle" color="Yellow" label="Start">
+   <set name="this/StartStage" type="Stage"/>
+</node>
+
+<node shape="Diamond" color="Blue">
+   <type name="Cond"/>
+</node>
+
+<node shape="Triangle" color="Red">
+   <type name="EmailType"/>
+</node>
+
+<node visible="no">
+   <type name="Transitions"/>
+</node>
+
+<node visible="yes">
+   <set name="automaton/State" type="Email"/>
+</node>
+
+<edge label="&#x041f;&#x0440;&#x0435;&#x0434;&#x0438;&#x043a;&#x0430;&#x0442;">
+   <relation name="Predicates"> <type name="Email"/> <type name="Cond"/> </relation>
+</edge>
+
+<edge label="&#x0421;&#x043e;&#x0441;&#x0442;&#x043e;&#x044f;&#x043d;&#x0438;&#x0435;">
+   <relation name="Current"> <type name="Email"/> <type name="Stage"/> </relation>
+</edge>
+
+<edge label="&#x0422;&#x0438;&#x043f;">
+   <relation name="Type"> <type name="Email"/> <type name="EmailType"/> </relation>
+</edge>
+
+<edge visible="no" label="&#x041d;&#x0430;&#x0447;&#x0430;&#x043b;&#x044c;&#x043d;&#x043e;&#x0435; &#x0441;&#x043e;&#x0441;&#x0442;&#x043e;&#x044f;&#x043d;&#x0438;&#x0435;">
+   <relation name="$Init_i"> <type name="Email"/> <type name="Stage"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

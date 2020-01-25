@@ -1,0 +1,16 @@
+digraph G {
+    edge [ fontsize = 10 ]
+
+    Received -> CheckSpam [ label = "NotDetected" ]
+    CheckSpam -> CheckNormal [ label = "NotDetected", color = red ]
+    CheckSpam -> Success [ label = "Detected", color = green ]
+    CheckNormal -> Success [ label = "Detected", color = green ]
+    CheckNormal ->Fail [ label = "NotDetected", color = red ]
+
+    Received [ color = cyan, style = filled ]
+    Success [ color = green, style = filled ]
+    Fail [ color = red, style = filled ]
+    
+    CheckSpam [ color = gold, style = filled ]
+    CheckNormal [ color = gold, style = filled ]
+}
